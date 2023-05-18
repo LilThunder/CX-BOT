@@ -69,7 +69,7 @@ async def on_message(message):
     elif message.content.startswith('$ip'):
         await message.channel.send("195.03.236")
     elif message.content.startswith('$help'):
-        await message.channel.send("aqui tienes todos los comandos: $hello (para saludar) $bye (para despedirse) $hug ( para abrazarme)$asqueroso (pelea de insultos >:() $ip (te digo tu ip de forma elegante)$help (de verdad necesitas que te explique este?)")
+        await message.channel.send(aqui tienes todos los comandos: $hello (para saludar) $bye (para despedirse) $hug ( para abrazarme)$asqueroso (pelea de insultos >:() $ip (te digo tu ip de forma elegante)$help (de verdad necesitas que te explique este?),$meme, $consejo, $articulo")
     else:
         await message.channel.send(message.content)
     
