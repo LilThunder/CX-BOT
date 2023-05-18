@@ -1,0 +1,74 @@
+import discord
+from discord.ext import commands
+intents = discord.Intents.default()
+intents.message_content = True
+import random
+
+client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+import discord
+from discord.ext import commands
+import random
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'Ha iniciado sesión como {bot.user}')
+
+@bot.command("consejo")
+async def consejo(ctx):
+    consejos = [
+        'Recuerda apagar las luces cuando no las necesites para ahorrar energía.',
+        'Utiliza transporte público o comparte coche para reducir la contaminación del aire.',
+        'Evita el uso de plásticos de un solo uso y opta por alternativas reutilizables.',
+        'Planta árboles en tu comunidad para ayudar a combatir el cambio climático.',
+        'Reduce tu consumo de agua cerrando el grifo mientras te cepillas los dientes o lavas los platos.',
+        'Recicla tus residuos correctamente para minimizar el impacto ambiental.',
+        'Compra productos locales y de temporada para reducir la huella de carbono del transporte.',
+        'Ahorra papel imprimiendo solo cuando sea necesario y utiliza papel reciclado.',
+        'Participa en actividades de limpieza comunitaria para mantener el medio ambiente limpio.',
+        'Informa a otras personas sobre la importancia de cuidar el medio ambiente y cómo pueden contribuir.'
+    ]
+    consejo_aleatorio = random.choice(consejos)
+    await ctx.send(consejo_aleatorio)
+
+@bot.command("articulo")
+async def articulos(ctx):
+    sitios_web = [
+        'https://www.ecologiaverde.com/consejos-para-el-buen-uso-de-la-basura-1590.html',
+        'https://www.nationalgeographic.es/medio-ambiente/2020/09/como-reducir-residuos-domesticos',
+        'https://www.ecoembes.com/es/blog/buenas-practicas-para-tirar-la-basura',
+        'https://www.consumer.es/medio-ambiente/los-10-mandamientos-del-reciclaje-en-casa.html',
+        'https://www.sostenibilidad.com/que-es-sostenibilidad/gestion-residuos/buenas-practicas-uso-los-contenedores/'
+    ]
+    sitio_web_aleatorio = random.choice(sitios_web)
+    await ctx.send(sitio_web_aleatorio)
+
+@client.event
+async def on_ready():
+    print(f'Hemos iniciado sesión como {client.user}')
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith('$hello'):
+        await message.channel.send("Hi!")
+    elif message.content.startswith('$hug'):
+        await message.channel.send("<3")
+    elif message.content.startswith('$bye'):
+        await message.channel.send("good bye mdfucker")
+    elif message.content.startswith('$asqueroso'):
+        await message.channel.send("bananin de mierda")
+    elif message.content.startswith('$ip'):
+        await message.channel.send("195.03.236")
+    elif message.content.startswith('$help'):
+        await message.channel.send("aqui tienes todos los comandos: $hello (para saludar) $bye (para despedirse) $hug ( para abrazarme)$asqueroso (pelea de insultos >:() $ip (te digo tu ip de forma elegante)$help (de verdad necesitas que te explique este?)")
+    else:
+        await message.channel.send(message.content)
+
+bot.run("INTRODUCE TU TOKEN AQUI")
