@@ -31,7 +31,9 @@ async def consejo(ctx):
         'Compra productos locales y de temporada para reducir la huella de carbono del transporte.',
         'Ahorra papel imprimiendo solo cuando sea necesario y utiliza papel reciclado.',
         'Participa en actividades de limpieza comunitaria para mantener el medio ambiente limpio.',
-        'Informa a otras personas sobre la importancia de cuidar el medio ambiente y cómo pueden contribuir.'
+        'Informa a otras personas sobre la importancia de cuidar el medio ambiente y cómo pueden contribuir.',
+        'tira la basura en su sitio',
+        'recicla'
     ]
     consejo_aleatorio = random.choice(consejos)
     await ctx.send(consejo_aleatorio)
@@ -70,5 +72,6 @@ async def on_message(message):
         await message.channel.send("aqui tienes todos los comandos: $hello (para saludar) $bye (para despedirse) $hug ( para abrazarme)$asqueroso (pelea de insultos >:() $ip (te digo tu ip de forma elegante)$help (de verdad necesitas que te explique este?)")
     else:
         await message.channel.send(message.content)
+    
 
 bot.run("INTRODUCE TU TOKEN AQUI")
